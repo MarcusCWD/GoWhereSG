@@ -1,0 +1,16 @@
+#singapore-map {
+    height: 100vh;
+    /* width: 50px; */
+  }
+  
+  #controlBar {
+    /* width: 50vh; */
+    background-color: aliceblue;
+    height: 100vh;
+  }
+  
+  #search-results {
+    height: 80vh;
+    overflow: scroll;
+  }
+  
