@@ -1,16 +1,19 @@
 #singapore-map {
-    height: 100vh;
-    /* width: 50px; */
-  }
-  
-  #controlBar {
-    /* width: 50vh; */
-    background-color: aliceblue;
-    height: 100vh;
-  }
-  
-  #search-results {
-    height: 80vh;
-    overflow: scroll;
-  }
-  
+  height: 100vh;
+}
+
+#myTab {
+  font-size: 18px;
+  color: rgb(102, 101, 101);
+}
+
+#parentTab {
+  bottom: 0;
+  position: absolute;
+  z-index: 314200;
+  background-color: aliceblue;
+}
+
+#myTabContent {
+  height: 40vh;
+}

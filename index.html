@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- ====================== START HEAD ======================   -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,84 +18,152 @@
       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
       crossorigin=""
     />
+    <!-- fontawesome link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- internal stylesheet.css -->
     <link rel="stylesheet" href="styles.css" />
     <title>GoWhereSG - where are you going today?</title>
   </head>
-  <!------------------------------------------------------------------------------->
+  <!-- ====================== END HEAD ======================   -->
 
+  <!-- ====================== START BODY ======================   -->
   <body>
-    <div class="row">
-      <div class="col-3" id="controlBar">
-        <input id="search-input" type="text" />
-        <button id="search-btn">Search</button>
-        <button id="pin-btn">pin</button>
-        <!-- start radio buttons -->
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="selectionBtn"
-            id="selectionBtn"
-            value="food"
-          />
-          <label class="form-check-label" for="food">Food</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="selectionBtn"
-            id="selectionBtn"
-            value="shops"
-          />
-          <label class="form-check-label" for="shops">Shops</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="selectionBtn"
-            id="selectionBtn"
-            value="attractions"
-          />
-          <label class="form-check-label" for="attractions">Attractions</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="selectionBtn"
-            id="selectionBtn"
-            value="outdoors"
-          />
-          <label class="form-check-label" for="outdoors">Outdoors</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="selectionBtn"
-            id="selectionBtn"
-            value="hotel"
-          />
-          <label class="form-check-label" for="hotel">Hotel</label>
-        </div>
-        <!-- end radio buttons -->
-        <input
-          type="range"
-          class="form-range"
-          min="1"
-          max="10"
-          step="0.5"
-          id="search-radius"
-        />
-        <div id="search-results"></div>
-      </div>
-      <div class="col-9" id="singapore-map"></div>
-    </div>
+    <!-- ------------------ START NAVBAR -------------------- -->
+    <!-- START NAVBUTTONS -->
+    <div id="parentTab">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="search-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#search"
+            type="button"
+            role="tab"
+            aria-controls="search"
+            aria-selected="true"
+          >
+            <i class="fas fa-light fa-magnifying-glass"></i>
+            Search
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="explore-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#explore"
+            type="button"
+            role="tab"
+            aria-controls="explore"
+            aria-selected="false"
+          >
+            <i class="fas fa-thin fa-person-running"></i>
+            Explore
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="weather-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#weather"
+            type="button"
+            role="tab"
+            aria-controls="weather"
+            aria-selected="false"
+          >
+            <i class="fas fa-thin fa-cloud-moon-rain"></i>
+            Weather
+          </button>
+        </li>
+        <li>
+          <div id="tab-btn">
+            <i class="fas fa-thin fa-caret-down ml-2 m-1 p-2"></i>
+          </div>
+        </li>
+      </ul>
+      <!-- END NAVBUTTONS -->
+      <!-- START NAV CONTENTS -->
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="search"
+          role="tabpanel"
+          aria-labelledby="search-tab"
+        >
+          <!-- start search and show -->
+          <div id="controlBar" class="m-2">
+            <div class="input-group row">
+              <div class="dropdown col-4">
+                <a
+                  class="btn btn-primary dropdown-toggle"
+                  href="#"
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Go
+                </a>
 
-    <!----------------------------------------------------------------------------------------->
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item">Atractions</a></li>
+                  <li><a class="dropdown-item">Food</a></li>
+                  <li><a class="dropdown-item">Tours</a></li>
+                  <li><a class="dropdown-item">Eco</a></li>
+                  <li><a class="dropdown-item">Shops</a></li>
+                </ul>
+              </div>
+
+              <input
+                type="search"
+                class="form-control rounded col-5"
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="search-addon"
+                id="search-input"
+              />
+              <button
+                type="button"
+                class="btn btn-outline-primary col-3"
+                id="search-btn"
+              >
+                search
+              </button>
+            </div>
+            <div id="search-results"></div>
+          </div>
+          <!-- end search and show -->
+        </div>
+        <div
+          class="tab-pane fade m-2"
+          id="explore"
+          role="tabpanel"
+          aria-labelledby="explore-tab"
+        >
+          explore
+        </div>
+        <div
+          class="tab-pane fade m-2"
+          id="weather"
+          role="tabpanel"
+          aria-labelledby="weather-tab"
+        >
+          weather
+        </div>
+      </div>
+      <!-- END NAV CONTENTS -->
+    </div>
+    <!-- ------------------ END NAVBAR -------------------- -->
+    <div id="singapore-map"></div>
+
     <!-- bootstrap script -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -115,11 +184,10 @@
       referrerpolicy="no-referrer"
     ></script>
     <!-- internal script -->
-    <script src="init-map.js"></script>
+    <script src="./functions/init-map.js"></script>
+    <script src="./functions/tab-function.js"></script>
     <script src="data.js"></script>
-    <script src="reset-layers.js"></script>
-    <script src="side-details.js"></script>
-    <script src="search-categories.js"></script>
     <script src="script.js"></script>
   </body>
+  <!-- ====================== END Body ======================   -->
 </html>

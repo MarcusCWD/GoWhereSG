@@ -9,9 +9,9 @@ async function search(lat, lng, query) {
       ll: ll,
       v: "20220211",
       query: query,
-      radius: currentRadius * radiusMul,
-      limit: 50,
-      categories: categories(),
+      radius: 5000,
+      limit: 10,
+      // categories: categories(),
     },
     headers: {
       Accept: "application/json",
