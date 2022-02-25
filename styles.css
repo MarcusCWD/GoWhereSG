@@ -12,8 +12,20 @@
   position: absolute;
   z-index: 314200;
   background-color: aliceblue;
+  /* height: 150px */
 }
 
 #myTabContent {
-  height: 40vh;
+  height: 60vh;
+  overflow-y: auto;
+}
+
+.img{
+border-radius: 10px;
+height: 200px
+}
+
+#search-results{
+  padding: 5px;
+  margin : 5px
 }

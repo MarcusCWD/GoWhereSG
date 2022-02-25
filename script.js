@@ -35,6 +35,30 @@ async function main() {
         marker.bindPopup(`<div>${eachVenue.name}</div>`);
         marker.addTo(searchResultLayer);
 
+        //pictures of each listing to be filtered by latest date
+        let responsePic = await searchPic(eachVenue.fsq_id) //return array of object
+        let resultElementPic =  document.createElement("div")
+        console.log(responsePic.length)
+        if (responsePic.length == 0 ){
+          resultElementPic.innerHTML = `<img src= "images/singapore-visit.jpg" class="img" >`
+          resultElementPic.className = "search-pic-result"
+        }
+        else{
+          let sortByDate = new Date('1800-01-01T01:01:00')
+          let imgLatest = null
+          for (byDate of responsePic){
+            let newDate = new Date (byDate.created_at)
+            if(newDate.getTime() >= sortByDate.getTime()){
+              sortByDate = newDate
+              imgLatest = byDate.prefix + "200" + byDate.suffix
+            }
+          }
+          resultElementPic.innerHTML = `<img src=${imgLatest} class="img">`
+          resultElementPic.className = "search-pic-result"
+        }
+        searchResultElement.appendChild(resultElementPic);
+   
+
         let resultElement = document.createElement("div");
         resultElement.innerHTML = eachVenue.name;
         resultElement.className = "search-result";
