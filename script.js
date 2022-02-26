@@ -19,6 +19,7 @@ async function main() {
     let searchBtn = document.querySelector("#search-btn");
     searchBtn.addEventListener("click", async function () {
       searchResultLayer.clearLayers(); // get rid of the existing markers
+      document.querySelector("#search-results").textContent = ""; // get rid of all search results
       let query = document.querySelector("#search-input").value;
       // let center = map.getBounds().getCenter();
       // let response = await search(center.lat, center.lng, query);
@@ -31,6 +32,12 @@ async function main() {
       // get the div that will display the search results
       let searchResultElement = document.querySelector("#search-results");
       // let searchEach = document.querySelector("#search-each");
+
+      // show the number of listings that foursquare query gives back
+      let searchResultNumber = document.createElement("div");
+      searchResultNumber.className = "text-secondary m-1";
+      searchResultNumber.innerText = `Search Results: ${response.results.length}`
+      searchResultElement.appendChild(searchResultNumber)
 
       for (let eachVenue of response.results) {
         let coordinate = [
@@ -103,6 +110,7 @@ async function main() {
           marker.openPopup();
         });
 
+        
         searchEach.appendChild(createDiv);
         searchEachText.appendChild(resultElement);
         searchEachText.appendChild(resultElementTip);
