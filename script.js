@@ -30,6 +30,7 @@ async function main() {
       console.log(response);
       // get the div that will display the search results
       let searchResultElement = document.querySelector("#search-results");
+      // let searchEach = document.querySelector("#search-each");
 
       for (let eachVenue of response.results) {
         let coordinate = [
@@ -40,13 +41,22 @@ async function main() {
         marker.bindPopup(`<div>${eachVenue.name}</div>`);
         marker.addTo(searchResultLayer);
 
+        let searchEach =  document.createElement("div");
+        searchEach.className = "search-each row"
+        let searchEachText = document.createElement("div")
+        searchEachText.className = "search-each-text col-6"
+        let spaceElement = document.createElement("hr");
+        spaceElement.className = "m-3";
+
+
         //pictures of each listing to be filtered by latest date
         let responsePic = await searchPic(eachVenue.fsq_id) //return array of object
-        let resultElementPic =  document.createElement("div")
-        // console.log(responsePic.length)
+        let resultElementPic =  document.createElement("img")
+        let createDiv = document.createElement("div")
+        createDiv.className = "inline-block col-6"
         if (responsePic.length == 0 ){
-          resultElementPic.innerHTML = `<img src= "images/singapore-visit.jpg" class="img" >`
-          resultElementPic.className = "search-pic-result"
+          resultElementPic.src = "images/singapore-visit.jpg"
+          resultElementPic.className = "img"
         }
         else{
           let sortByDate = new Date('1800-01-01T01:01:00')
@@ -58,17 +68,16 @@ async function main() {
               imgLatest = byDate.prefix + "500" + byDate.suffix
             }
           }
-          resultElementPic.innerHTML = `<img src=${imgLatest} class="img">`
-          resultElementPic.className = "search-pic-result"
+          resultElementPic.src = imgLatest
+          resultElementPic.className = "img"
+          createDiv.appendChild(resultElementPic)
         }
-        searchResultElement.appendChild(resultElementPic);
 
         //Tips of each listing to be filtered by latest date
         let responseTip = await searchTip(eachVenue.fsq_id) //return array of object
-        let resultElementTip =  document.createElement("div")
-        console.log(responseTip.length)
+        let resultElementTip =  document.createElement("div");
         if (responseTip.length == 0 ){
-          resultElementTip.innerText = ``
+          resultElementTip.innerText = ""
           resultElementTip.className = "search-tip-result"
         }
         else{
@@ -81,13 +90,12 @@ async function main() {
               tipLatest = byDate.text 
             }
           }
-          resultElementTip.innerText = tipLatest
-          resultElementTip.className = "search-tip-result"
+          resultElementTip.innerText = tipLatest;
+          resultElementTip.className = "search-tip-result";
         }
-        searchResultElement.appendChild(resultElementTip);
-   
 
-        let resultElement = document.createElement("div");
+        //create name of place and click-bility
+        let resultElement = document.createElement("a");
         resultElement.innerHTML = eachVenue.name;
         resultElement.className = "search-result";
         resultElement.addEventListener("click", function () {
@@ -95,8 +103,15 @@ async function main() {
           marker.openPopup();
         });
 
-        searchResultElement.appendChild(resultElement);
+        searchEach.appendChild(createDiv);
+        searchEachText.appendChild(resultElement);
+        searchEachText.appendChild(resultElementTip);
+        searchEach.appendChild(searchEachText);
+        searchResultElement.appendChild(searchEach);
+        searchResultElement.appendChild(spaceElement);
+        
       }
+      
     });
   });
 }
