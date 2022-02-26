@@ -1,5 +1,4 @@
-const API_BASE_URL = "https://api.foursquare.com/v3";
-const API_KEY = "fsq3rUd+WwCcMYgPyi7kuRpXjjEw8J3b1CwmPHwUFiiaK5c=";
+//key and base url has been declared in data-ne-sw.js
 
 async function search(lat, lng, query) {
   let ll = lat + "," + lng;
@@ -9,8 +8,8 @@ async function search(lat, lng, query) {
       ll: ll,
       v: "20220211",
       query: query,
-      radius: 5000,
-      limit: 10,
+      radius: 15000,
+      limit: 30,
       // categories: categories(),
     },
     headers: {

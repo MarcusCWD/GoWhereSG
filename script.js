@@ -1,5 +1,5 @@
 const singapore = [1.35, 103.82]; // singapore base coordinate
-let currentRadius = 5; // default global variable for sliding radius value
+let currentRadius = 15; // default global variable for sliding radius value
 const radiusMul = 1000; // global variable for multipying base km to get m
 
 // document.querySelector("#search-radius").addEventListener("input", function () {
@@ -20,8 +20,13 @@ async function main() {
     searchBtn.addEventListener("click", async function () {
       searchResultLayer.clearLayers(); // get rid of the existing markers
       let query = document.querySelector("#search-input").value;
-      let center = map.getBounds().getCenter();
-      let response = await search(center.lat, center.lng, query);
+      // let center = map.getBounds().getCenter();
+      // let response = await search(center.lat, center.lng, query);
+      let bounds = map.getBounds();
+      let northeast = bounds.getNorthEast();
+      let southwest = bounds.getSouthWest();
+      console.log(northeast, southwest)
+      let response = await searchNESW(northeast.lat,northeast.lng, southwest.lat, southwest.lng, query);
       console.log(response);
       // get the div that will display the search results
       let searchResultElement = document.querySelector("#search-results");
@@ -38,7 +43,7 @@ async function main() {
         //pictures of each listing to be filtered by latest date
         let responsePic = await searchPic(eachVenue.fsq_id) //return array of object
         let resultElementPic =  document.createElement("div")
-        console.log(responsePic.length)
+        // console.log(responsePic.length)
         if (responsePic.length == 0 ){
           resultElementPic.innerHTML = `<img src= "images/singapore-visit.jpg" class="img" >`
           resultElementPic.className = "search-pic-result"
@@ -50,13 +55,36 @@ async function main() {
             let newDate = new Date (byDate.created_at)
             if(newDate.getTime() >= sortByDate.getTime()){
               sortByDate = newDate
-              imgLatest = byDate.prefix + "200" + byDate.suffix
+              imgLatest = byDate.prefix + "500" + byDate.suffix
             }
           }
           resultElementPic.innerHTML = `<img src=${imgLatest} class="img">`
           resultElementPic.className = "search-pic-result"
         }
         searchResultElement.appendChild(resultElementPic);
+
+        //Tips of each listing to be filtered by latest date
+        let responseTip = await searchTip(eachVenue.fsq_id) //return array of object
+        let resultElementTip =  document.createElement("div")
+        console.log(responseTip.length)
+        if (responseTip.length == 0 ){
+          resultElementTip.innerText = ``
+          resultElementTip.className = "search-tip-result"
+        }
+        else{
+          let sortByDate = new Date('1800-01-01T01:01:00')
+          let tipLatest = ""
+          for (byDate of responseTip){
+            let newDate = new Date (byDate.created_at)
+            if(newDate.getTime() >= sortByDate.getTime()){
+              sortByDate = newDate
+              tipLatest = byDate.text 
+            }
+          }
+          resultElementTip.innerText = tipLatest
+          resultElementTip.className = "search-tip-result"
+        }
+        searchResultElement.appendChild(resultElementTip);
    
 
         let resultElement = document.createElement("div");

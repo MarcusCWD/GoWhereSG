@@ -22,7 +22,8 @@
 
 .img{
 border-radius: 10px;
-height: 200px
+height: 180px;
+width: 180px;
 }
 
 #search-results{
