@@ -3,19 +3,24 @@ const singapore = [1.35, 103.82]; // singapore base coordinate
 // document.querySelector("#search-radius").addEventListener("input", function () {
 //   currentRadius = document.querySelector("#search-radius").value;
 // });
-
+let map1Layer = L.layerGroup();
+let map2Layer = L.layerGroup();
 // ------------------FUNCTION: main------------------ //
 async function main() {
+
   let map = initMap();
+
   let searchResultLayer = L.layerGroup();
   searchResultLayer.addTo(map);
+
   let weatherLayer = L.layerGroup();
   weatherLayer.addTo(map);
+
   let infoCenterLayer = L.layerGroup();
-  infoCenterLayer.addTo(map);
+  // infoCenterLayer.addTo(map);
   
   tabFunction();
-
+  
   window.addEventListener("DOMContentLoaded", async function () {
 
     //call Infomation center data
@@ -92,7 +97,7 @@ async function main() {
           eachVenue.geocodes.main.latitude,
           eachVenue.geocodes.main.longitude,
         ];
-        let marker = L.marker(coordinate);
+        let marker = L.marker(coordinate, {icon: searchIcon});
         marker.bindPopup(`<div>${eachVenue.name}</div>`);
         marker.addTo(searchResultLayer);
 
@@ -170,13 +175,12 @@ async function main() {
         
       }
     
-    
-
     });
 
     // base layers: must choose at least one and only one
     let baseLayer = {
-      "Search Results" : searchResultLayer,
+      "Street View" : map1Layer,
+      "Night View" : map2Layer
     };
 
     // ovelays: can toggle on or off individual for each layer
@@ -186,7 +190,7 @@ async function main() {
     };
 
     // add the overlays to the map
-    L.control.layers(baseLayer, overlay).addTo(map);  
+    L.control.layers(baseLayer, overlay,).addTo(map,  {icon: searchIcon});  
   });
 }
 // ------------------ END FUNCTION: main------------------ //
