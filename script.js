@@ -1,6 +1,4 @@
 const singapore = [1.35, 103.82]; // singapore base coordinate
-let currentRadius = 15; // default global variable for sliding radius value
-const radiusMul = 1000; // global variable for multipying base km to get m
 
 // document.querySelector("#search-radius").addEventListener("input", function () {
 //   currentRadius = document.querySelector("#search-radius").value;
@@ -11,13 +9,30 @@ async function main() {
   let map = initMap();
   let searchResultLayer = L.layerGroup();
   searchResultLayer.addTo(map);
+  let weatherLayer = L.layerGroup();
+  weatherLayer.addTo(map);
 
+  
   tabFunction();
-  // call upon initFunction to start map
 
-  window.addEventListener("DOMContentLoaded", function () {
+  window.addEventListener("DOMContentLoaded", async function () {
+
     let searchBtn = document.querySelector("#search-btn");
     searchBtn.addEventListener("click", async function () {
+
+      //call weather data
+      let responseWeather = await getWeather()
+      console.log(responseWeather)
+      for (weather of responseWeather.area_metadata){
+        let weatherCoordinate = [
+          weather.label_location.latitude,
+          weather.label_location.longitude,
+        ];
+        let weatherMarker = L.marker(weatherCoordinate);
+        weatherMarker.bindPopup(`<div>${weather.name}</div>`);
+        weatherMarker.addTo(weatherLayer);
+      }
+      
       searchResultLayer.clearLayers(); // get rid of the existing markers
       document.querySelector("#search-results").textContent = ""; // get rid of all search results
       let query = document.querySelector("#search-input").value;
