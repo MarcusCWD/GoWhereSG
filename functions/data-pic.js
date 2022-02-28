@@ -3,7 +3,7 @@ async function searchPic(fqid) {
  
   let response = await axios.get(API_BASE_URL + "/places/"+ fqid + "/photos", {
     params: {
-      limit: 50,
+      limit: 5,
     },
     headers: {
       Accept: "application/json",

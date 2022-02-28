@@ -1,0 +1,64 @@
+{
+    "infomation_center" : [
+        {
+            "name": "Orchard Gateway",
+            "location": "216 Orchard Road",
+            "geo" : [1.280291381444506, 103.84474193031609]
+        },
+        {
+            "name": "ION Orchard",
+            "location": "2 Orchard Turn, Level 1",
+            "geo" : [1.304444, 103.831852]
+        },
+        {
+            "name": "Chinatown",
+            "location": "2 Banda Street",
+            "geo" : [1.2817169752896937, 103.84377220316435]
+        },
+        {
+            "name": "Hotel 1888 Collection (Chinatown)",
+            "location": "20 Trengganu Street, #03-01",
+            "geo" : [1.282661, 103.84397]
+        },
+        {
+            "name": "Funan Mall",
+            "location": "107 North Bridge Road, B2",
+            "geo" : [1.291332683974342, 103.85012105102302]
+        },
+        {
+            "name": "Raffles City Singapore",
+            "location": "252 North Bridge Road, Level 1",
+            "geo" : [1.293879, 103.853247]
+        },
+        {
+            "name": "Kim Choo Kueh Chang",
+            "location": "111 East Coast Road",
+            "geo" : [1.3056104836966682, 103.9046048436843]
+        },
+        {
+            "name": "Gardens by the Bay",
+            "location": "18 Marina Gardens Dr",
+            "geo" : [1.2822698724239123, 103.86581047755854]
+        },
+        {
+            "name": "Bukit Timah Nature Reserve Visitor Center",
+            "location": "Bukit Timah Nature Reserve",
+            "geo" : [1.3481613053406425, 103.77668469917076]
+        },
+        {
+            "name": "Newater Visitor Centre",
+            "location": "20 Koh Sek Lim Rd",
+            "geo" : [1.3246384939703015, 103.95865557581733]
+        },
+        {
+            "name": "Sentosa Visitor Centre",
+            "location": "2 Sentosa Gateway",
+            "geo" : [1.2574771620349199, 103.82307927530374]
+        },
+        {
+            "name": "Singapore Sports Hub Visitors Centre",
+            "location": "1 Stadium Dr",
+            "geo" : [1.301888, 103.873367]
+        }
+    ]
+}
