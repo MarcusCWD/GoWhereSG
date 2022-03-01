@@ -30,6 +30,22 @@ const weatherIconThunder = L.icon({
 
 });
 
+const weatherIconHazy = L.icon({
+    iconUrl: 'images/haze.png',
+    iconSize: [50, 50],
+    iconAnchor: [0, 0],
+    popupAnchor: [0, -10]
+
+});
+
+const weatherIconWind = L.icon({
+    iconUrl: 'images/wind.png',
+    iconSize: [50, 50],
+    iconAnchor: [0, 0],
+    popupAnchor: [0, -10]
+
+});
+
 const infoIcon = L.icon({
     iconUrl: 'images/info-512.png',
     iconSize: [20, 20],
@@ -45,3 +61,4 @@ const searchIcon = L.icon({
     popupAnchor: [0, -10]
 
 });
+

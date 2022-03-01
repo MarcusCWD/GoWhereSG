@@ -3,7 +3,7 @@ async function searchTip(fqid) {
  
     let response = await axios.get(API_BASE_URL + "/places/"+ fqid + "/tips", {
       params: {
-        limit: 10,
+        limit: 5,
       },
       headers: {
         Accept: "application/json",

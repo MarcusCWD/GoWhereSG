@@ -10,14 +10,14 @@ async function main() {
 
   let map = initMap();
 
-  let searchResultLayer = L.layerGroup();
+  let searchResultLayer = L.markerClusterGroup();
   searchResultLayer.addTo(map);
 
   let weatherLayer = L.layerGroup();
   weatherLayer.addTo(map);
 
   let infoCenterLayer = L.layerGroup();
-  // infoCenterLayer.addTo(map);
+  
   
   tabFunction();
   
@@ -43,29 +43,24 @@ async function main() {
       for(weatherType of responseWeather.items[0].forecasts){
         if(weatherType.forecasts === "Cloudy" || "Partly Cloudy (Day)" || "Partly Cloudy (Night)"){
           weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconCloudy});
-          weatherMarker.bindPopup(`<div>${weather.name}</div>`);
-          weatherMarker.addTo(weatherLayer);
         }
-        else if(weatherType.forecasts === "Showers" || "Moderate Rain" || "Light Rain"){
-          weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconRain});
-          weatherMarker.bindPopup(`<div>${weather.name}</div>`);
-          weatherMarker.addTo(weatherLayer);
+        else if(weatherType.forecasts === "Showers" || "Moderate Rain" || "Light Rain" || "Light Showers" || "Heavy Showers"){
+          weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconShower});
         }
-        else if(weatherType.forecasts === "Fair" || "Fair (Day)" || "Light & Warm"){
+        else if(weatherType.forecasts === "Fair" || "Fair (Day)" || "Fair (Night)" ||"Light & Warm"){
           weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconFair});
-          weatherMarker.bindPopup(`<div>${weather.name}</div>`);
-          weatherMarker.addTo(weatherLayer);
         }
-        else if(weatherType.forecasts === "Thundery Showers" || "Heavy Showers" || "Heavy Thundery Showers with Gusty Winds"){
+        else if(weatherType.forecasts === "Thundery Showers" || "Heavy Showers" || "Heavy Thundery Showers" || "Heavy Thundery Showers with Gusty Winds"){
           weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconThunder});
-          weatherMarker.bindPopup(`<div>${weather.name}</div>`);
-          weatherMarker.addTo(weatherLayer);
         }
-        else{
-          weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconCloudy});
-          weatherMarker.bindPopup(`<div>${weather.name}</div>`);
-          weatherMarker.addTo(weatherLayer);
+        else if(weatherType.forecasts === "Hazy" || "Slightly Hazy" || "Misty"){
+          weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconHazy});
         }
+        else if(weatherType.forecasts === "Windy" ){
+          weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconWind});
+        }
+        weatherMarker.bindPopup(`<div>${weather.name}</div>`);
+        weatherMarker.addTo(weatherLayer);
       }
     }
 

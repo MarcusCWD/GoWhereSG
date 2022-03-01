@@ -10,7 +10,7 @@ async function searchNESW(neLat,neLng,swLat,swLng, query) {
         sw: sw,
         v: "20220211",
         query: query,
-        limit: 20,
+        limit: 10,
     },
         headers: {
             Accept: "application/json",
