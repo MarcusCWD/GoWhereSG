@@ -9,7 +9,7 @@ async function search(lat, lng, query) {
       v: "20220211",
       query: query,
       radius: 15000,
-      limit: 30,
+      limit: 10,
       // categories: categories(),
     },
     headers: {

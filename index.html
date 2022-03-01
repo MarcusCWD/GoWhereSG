@@ -106,8 +106,7 @@
           <!-- start search and show -->
           <div id="controlBar" class=" m-2">
             <div class="input-group">
-              
-
+            
               <input
                 type="search"
                 class="form-control rounded "
@@ -124,6 +123,40 @@
                 search
               </button>
             </div>
+            <!-- Start Filter control -->
+            <div id="filter-parent">
+              <div class="form-check">
+                <input class="form-check-input check-form" type="checkbox" value="entertainment" id="entertainment">
+                <label class="form-check-label" for="entertainment">
+                  Entertainment
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input check-form" type="checkbox" value="lodging" id="lodging">
+                <label class="form-check-label" for="lodging">
+                  Lodging
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input check-form" type="checkbox" value="food" id="food">
+                <label class="form-check-label" for="food">
+                  Food
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input check-form" type="checkbox" value="shop" id="shop">
+                <label class="form-check-label" for="shop">
+                  Shop
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input check-form" type="checkbox" value="eco" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                  Eco
+                </label>
+              </div>
+            </div>
+            <!-- End Filter control -->
             <div id="search-results"></div>
           </div>
           <!-- end search and show -->
@@ -175,11 +208,14 @@
     <script src="./functions/init-map.js"></script>
     <script src="./functions/tab-function.js"></script>
     <script src="./functions/data-weather.js"></script>
+    <script src="./functions/weather.js"></script>
+    <script src="./functions/filter-checkbox.js"></script>
     <script src="./functions/marker-icon.js"></script>
     <script src="./functions/data-info-center.js"></script>
     <script src="./functions/data-ne-sw.js"></script>
     <script src="./functions/data-pic.js"></script>
     <script src="./functions/data-tip.js"></script>
+    <script src="./functions/data.js"></script>
   
     <script src="script.js"></script>
   </body>

@@ -33,49 +33,20 @@ async function main() {
     }
 
     //call weather data
-    let responseWeather = await getWeather()
-    for (weather of responseWeather.area_metadata){
-      let weatherMarker = null;
-      let weatherCoordinate = [
-        weather.label_location.latitude,
-        weather.label_location.longitude,
-      ];
-      for(weatherType of responseWeather.items[0].forecasts){
-        if(weatherType.forecasts === "Cloudy" || "Partly Cloudy (Day)" || "Partly Cloudy (Night)"){
-          weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconCloudy});
-        }
-        else if(weatherType.forecasts === "Showers" || "Moderate Rain" || "Light Rain" || "Light Showers" || "Heavy Showers"){
-          weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconShower});
-        }
-        else if(weatherType.forecasts === "Fair" || "Fair (Day)" || "Fair (Night)" ||"Light & Warm"){
-          weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconFair});
-        }
-        else if(weatherType.forecasts === "Thundery Showers" || "Heavy Showers" || "Heavy Thundery Showers" || "Heavy Thundery Showers with Gusty Winds"){
-          weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconThunder});
-        }
-        else if(weatherType.forecasts === "Hazy" || "Slightly Hazy" || "Misty"){
-          weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconHazy});
-        }
-        else if(weatherType.forecasts === "Windy" ){
-          weatherMarker = L.marker(weatherCoordinate, {icon:weatherIconWind});
-        }
-        weatherMarker.bindPopup(`<div>${weather.name}</div>`);
-        weatherMarker.addTo(weatherLayer);
-      }
-    }
+    await weatherFunc(weatherLayer);
 
     let searchBtn = document.querySelector("#search-btn");
     searchBtn.addEventListener("click", async function () {
       searchResultLayer.clearLayers(); // get rid of the existing markers
       document.querySelector("#search-results").textContent = ""; // get rid of all search results
       let query = document.querySelector("#search-input").value;
-      // let center = map.getBounds().getCenter();
-      // let response = await search(center.lat, center.lng, query);
-      let bounds = map.getBounds();
-      let northeast = bounds.getNorthEast();
-      let southwest = bounds.getSouthWest();
+      let center = map.getBounds().getCenter();
+      let response = await search(center.lat, center.lng, query);
+      // let bounds = map.getBounds();
+      // let northeast = bounds.getNorthEast();
+      // let southwest = bounds.getSouthWest();
       // console.log(northeast, southwest)
-      let response = await searchNESW(northeast.lat,northeast.lng, southwest.lat, southwest.lng, query);
+      // let response = await searchNESW(northeast.lat,northeast.lng, southwest.lat, southwest.lng, query);
       // console.log(response);
       // get the div that will display the search results
       let searchResultElement = document.querySelector("#search-results");
@@ -105,50 +76,64 @@ async function main() {
 
 
         //pictures of each listing to be filtered by latest date
-        let responsePic = await searchPic(eachVenue.fsq_id) //return array of object
-        // console.log(responsePic)
-        let resultElementPic =  document.createElement("img")
-        let createDiv = document.createElement("div")
-        createDiv.className = "inline-block col-6"
-        if (responsePic.length == 0 ){
-          resultElementPic.src = "images/singapore-visit.jpg"
-          resultElementPic.className = "img"
-        }
-        else{
-          let sortByDate = new Date('1800-01-01T01:01:00')
-          let imgLatest = null
-          for (byDate of responsePic){
-            let newDate = new Date (byDate.created_at)
-            if(newDate.getTime() >= sortByDate.getTime()){
-              sortByDate = newDate
-              imgLatest = byDate.prefix + "500" + byDate.suffix
-            }
+        let responsePic = null;
+        try {
+          responsePic = await searchPic(eachVenue.fsq_id)
+        } catch(e) {
+          responsePic= []
+          console.log('error caught')
+        } finally {
+          let resultElementPic =  document.createElement("img")
+          let createDiv = document.createElement("div")
+          createDiv.className = "inline-block col-6"
+          if (responsePic.length == 0 ){
+            resultElementPic.innerHTML = `<img src= "images/singapore-visit.jpg" class="img" >`
+            resultElementPic.className = "search-pic-result"
           }
-          resultElementPic.src = imgLatest
-          resultElementPic.className = "img"
-          createDiv.appendChild(resultElementPic)
+          else{
+            let sortByDate = new Date('1800-01-01T01:01:00')
+            let imgLatest = null
+            for (byDate of responsePic){
+              let newDate = new Date (byDate.created_at)
+              if(newDate.getTime() >= sortByDate.getTime()){
+                sortByDate = newDate
+                imgLatest = byDate.prefix + "500" + byDate.suffix
+              }
+            }
+            resultElementPic.src = imgLatest
+            resultElementPic.className = "img"
+            createDiv.appendChild(resultElementPic)
+            searchEach.appendChild(createDiv);
+          }
         }
 
-        //Tips of each listing to be filtered by latest date
-        let responseTip = await searchTip(eachVenue.fsq_id) //return array of object
-        // console.log(responseTip)
-        let resultElementTip =  document.createElement("div");
-        if (responseTip.length == 0 ){
-          resultElementTip.innerText = ""
-          resultElementTip.className = "search-tip-result"
-        }
-        else{
-          let sortByDate = new Date('1800-01-01T01:01:00')
-          let tipLatest = ""
-          for (byDate of responseTip){
-            let newDate = new Date (byDate.created_at)
-            if(newDate.getTime() >= sortByDate.getTime()){
-              sortByDate = newDate
-              tipLatest = byDate.text 
+        let responseTip = null;
+        try {
+          responseTip = await searchTip(eachVenue.fsq_id)
+        } catch(e) {
+          responseTip= []
+          console.log('error caught')
+        } finally {
+            let resultElementTip =  document.createElement("div");
+            if (responseTip.length == 0 ){
+              resultElementTip.innerText = ""
+              resultElementTip.className = "search-tip-result"
             }
-          }
-          resultElementTip.innerText = tipLatest;
-          resultElementTip.className = "search-tip-result";
+            else{
+              let sortByDate = new Date('1800-01-01T01:01:00')
+              let tipLatest = ""
+              for (byDate of responseTip){
+                let newDate = new Date (byDate.created_at)
+                if(newDate.getTime() >= sortByDate.getTime()){
+                  sortByDate = newDate
+                  tipLatest = byDate.text 
+                }
+              }
+              resultElementTip.innerText = tipLatest;
+              resultElementTip.className = "search-tip-result";
+              searchEachText.appendChild(resultElementTip);
+            }
+
         }
 
         //create name of place and click-bility
@@ -159,15 +144,11 @@ async function main() {
           map.flyTo(coordinate, 16);
           marker.openPopup();
         });
-
         
-        searchEach.appendChild(createDiv);
         searchEachText.appendChild(resultElement);
-        searchEachText.appendChild(resultElementTip);
         searchEach.appendChild(searchEachText);
         searchResultElement.appendChild(searchEach);
         searchResultElement.appendChild(spaceElement);
-        
       }
     
     });
