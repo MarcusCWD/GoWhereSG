@@ -1,8 +1,6 @@
 const singapore = [1.35, 103.82]; // singapore base coordinate
+let categories = "10000,13000,14000,16000,17000,18000,19000" //default categories for foursquare
 
-// document.querySelector("#search-radius").addEventListener("input", function () {
-//   currentRadius = document.querySelector("#search-radius").value;
-// });
 let map1Layer = L.layerGroup();
 let map2Layer = L.layerGroup();
 // ------------------FUNCTION: main------------------ //
@@ -36,6 +34,9 @@ async function main() {
 
     let searchBtn = document.querySelector("#search-btn");
     searchBtn.addEventListener("click", async function () {
+
+      categoryFunc(); 
+      console.log(categories) 
       searchResultLayer.clearLayers(); // get rid of the existing markers
       document.querySelector("#search-results").textContent = ""; // get rid of all search results
       let query = document.querySelector("#search-input").value;
