@@ -31,6 +31,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <!-- internal stylesheet.css -->
     <link rel="stylesheet" href="styles.css" />
     <title>GoWhereSG - where are you going today?</title>
@@ -45,7 +49,7 @@
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button
-            class="nav-link active"
+            class="nav-link active tab-button-search"
             id="search-tab"
             data-bs-toggle="tab"
             data-bs-target="#search"
@@ -60,7 +64,7 @@
         </li>
         <li class="nav-item" role="presentation">
           <button
-            class="nav-link"
+            class="nav-link tab-button-explore"
             id="explore-tab"
             data-bs-toggle="tab"
             data-bs-target="#explore"
@@ -75,7 +79,7 @@
         </li>
         <li class="nav-item" role="presentation">
           <button
-            class="nav-link"
+            class="nav-link tab-button-route"
             id="weather-tab"
             data-bs-toggle="tab"
             data-bs-target="#weather"
@@ -84,8 +88,8 @@
             aria-controls="weather"
             aria-selected="false"
           >
-            <i class="fas fa-thin fa-cloud-moon-rain"></i>
-            Weather
+            <i class="fas fa-light fa-route"></i>
+            Route
           </button>
         </li>
         <li>
@@ -123,51 +127,85 @@
                 search
               </button>
             </div>
-            <!-- Start Filter control -->
-            <div id="filter-parent">
-              <div class="form-check">
-                <input class="form-check-input check-form" type="checkbox" value="entertainment" id="entertainment">
-                <label class="form-check-label" for="entertainment">
-                  Entertainment
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input check-form" type="checkbox" value="lodging" id="lodging">
-                <label class="form-check-label" for="lodging">
-                  Lodging
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input check-form" type="checkbox" value="food" id="food">
-                <label class="form-check-label" for="food">
-                  Food
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input check-form" type="checkbox" value="shop" id="shop">
-                <label class="form-check-label" for="shop">
-                  Shop
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input check-form" type="checkbox" value="eco" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
-                  Eco
-                </label>
+
+            <!-- Start droplist filter -->
+            <div>
+              <p>
+                <button class="btn btn-filter my-1" type="button" data-bs-toggle="collapse" data-bs-target="#filter-dropdown" aria-expanded="false" aria-controls="collapseExample">
+                  Filter
+                </button>
+              </p>
+              <div class="collapse" id="filter-dropdown">
+                <div class="card card-body">
+                  <!-- Start Filter control -->
+                  <div id="filter-parent">
+                    <div class="form-check">
+                      <input class="form-check-input check-form" type="checkbox" value="entertainment" id="entertainment">
+                      <label class="form-check-label" for="entertainment">
+                        Entertainment
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input check-form" type="checkbox" value="lodging" id="lodging">
+                      <label class="form-check-label" for="lodging">
+                        Lodging
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input check-form" type="checkbox" value="food" id="food">
+                      <label class="form-check-label" for="food">
+                        Food
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input check-form" type="checkbox" value="shop" id="shop">
+                      <label class="form-check-label" for="shop">
+                        Shop
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input check-form" type="checkbox" value="eco" id="flexCheckChecked">
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Eco
+                      </label>
+                    </div>
+                  </div>
+                  <!-- End Filter control -->
+                </div>
               </div>
             </div>
-            <!-- End Filter control -->
+
+            <!-- End droplist filter -->
+          
             <div id="search-results"></div>
           </div>
           <!-- end search and show -->
         </div>
         <div
-          class="tab-pane fade m-2"
+          class="tab-pane fade my-1"
           id="explore"
           role="tabpanel"
           aria-labelledby="explore-tab"
         >
-          explore
+          <div>
+              <div
+              class="image card-explore m-3 card1"
+              style="background-image: url(images/singapore-flyer.jpg)"
+            >Iconic Singapore</div>
+            
+            
+              <div
+              class="image card-explore m-3 card2"
+              style="background-image: url(images/chinatown-singapore.jpg)"
+            >Heritage Singapore</div>
+            
+            
+              <div
+              class="image card-explore m-3 card3"
+              style="background-image: url(images/marina-bay-sands-singapore.jpg)"
+            >Shop Singapore</div>
+        
+          </div>
         </div>
         <div
           class="tab-pane fade m-2"

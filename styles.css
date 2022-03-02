@@ -4,20 +4,20 @@
 
 #myTab {
   font-size: 18px;
-  color: rgb(102, 101, 101);
+  background-color: #f5f4f4;
 }
 
 #parentTab {
   bottom: 0;
   position: absolute;
   z-index: 314200;
-  background-color: aliceblue;
   width: 390px;
 }
 
 #myTabContent {
   height: 60vh;
   overflow-y: auto;
+  background-color: #fff;
 
 }
 
@@ -33,6 +33,54 @@ width: 180px;
   margin : 5px;
 }
 
+/* to change color later */
+.btn-filter{
+  background-color: #ffff;
+  border-color: blue;
+}
+
+.card-explore{
+  border-radius: 10px;
+  background-color: #ffff;
+  height: 400px;
+  /* padding: 20px */
+}
+
+.tab-button-search{
+  color: #948b73;
+}
+.tab-button-explore{
+  color: #8d846c;
+}
+.tab-button-route{
+  color: #7c735b;
+}
+.card1{
+  color: #FEF7DC;
+  font-family: 'Dancing Script', cursive;
+  font-size: 35px;
+  padding: 5px;
+}
+.card2{
+  color: rgb(28, 68, 68);
+  font-family: 'Dancing Script', cursive;
+  font-size: 35px;
+  padding: 5px;
+}
+.card3{
+  color: #FEF7DC;
+  font-family: 'Dancing Script', cursive;
+  font-size: 35px;
+  padding: 5px;
+}
+.image {
+
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.3em;
+  border-radius: 0.2em;
+}
 
 ::-webkit-scrollbar {
   width: 4px;               
