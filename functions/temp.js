@@ -4,18 +4,18 @@ let returnFilter = checkBox();
 for (let eachVenue of response.results) {
     for (filter of returnFilter){
         if (filter == "entertainment" && eachVenue.categories[0].id <= 10056 && eachVenue.categories[0].id >= 10000){
-
+          
         }
-        if (filter == "lodging"){
+        else if (filter == "lodging"){
             
         }
-        if (filter == "food"){
+        else if (filter == "food"){
             
         }
-        if (filter == "shop"){
+        else if (filter == "shop"){
             
         }
-        if (filter == "eco"){
+        else if (filter == "eco"){
             
         }
     }

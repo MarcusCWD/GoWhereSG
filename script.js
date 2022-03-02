@@ -25,7 +25,6 @@ async function main() {
 
     //call Infomation center data
     let responseInfoCenter = await getInfoCenter();
-    // console.log(responseInfoCenter)
     for (info of responseInfoCenter.infomation_center){
       let markerInfo = L.marker(info.geo,  {icon:infoIcon});
       markerInfo.bindPopup(`<div>${info.name}</div>`);
@@ -40,18 +39,14 @@ async function main() {
       searchResultLayer.clearLayers(); // get rid of the existing markers
       document.querySelector("#search-results").textContent = ""; // get rid of all search results
       let query = document.querySelector("#search-input").value;
-      let center = map.getBounds().getCenter();
-      let response = await search(center.lat, center.lng, query);
-      // let bounds = map.getBounds();
-      // let northeast = bounds.getNorthEast();
-      // let southwest = bounds.getSouthWest();
-      // console.log(northeast, southwest)
-      // let response = await searchNESW(northeast.lat,northeast.lng, southwest.lat, southwest.lng, query);
-      // console.log(response);
+      let bounds = map.getBounds();
+      let northeast = bounds.getNorthEast();
+      let southwest = bounds.getSouthWest();
+      let response = await searchNESW(northeast.lat,northeast.lng, southwest.lat, southwest.lng, query);
+      
       // get the div that will display the search results
       let searchResultElement = document.querySelector("#search-results");
-      // let searchEach = document.querySelector("#search-each");
-
+  
       // show the number of listings that foursquare query gives back
       let searchResultNumber = document.createElement("div");
       searchResultNumber.className = "text-secondary m-1";
@@ -83,12 +78,10 @@ async function main() {
           responsePic= []
           console.log('error caught')
         } finally {
-          let resultElementPic =  document.createElement("img")
-          let createDiv = document.createElement("div")
-          createDiv.className = "inline-block col-6"
+          let resultElementPic =  document.createElement("div")
+          resultElementPic.className = "search-pic-result col-6"
           if (responsePic.length == 0 ){
-            resultElementPic.innerHTML = `<img src= "images/singapore-visit.jpg" class="img" >`
-            resultElementPic.className = "search-pic-result"
+            resultElementPic.innerHTML = `<img src="images/singapore-visit.jpg" class="img" >`
           }
           else{
             let sortByDate = new Date('1800-01-01T01:01:00')
@@ -100,13 +93,25 @@ async function main() {
                 imgLatest = byDate.prefix + "500" + byDate.suffix
               }
             }
-            resultElementPic.src = imgLatest
-            resultElementPic.className = "img"
-            createDiv.appendChild(resultElementPic)
-            searchEach.appendChild(createDiv);
+            let internalImg =  document.createElement("img")
+            internalImg.src = imgLatest
+            internalImg.className = "img"
+            resultElementPic.appendChild(internalImg)
           }
+          searchEach.appendChild(resultElementPic);
         }
 
+        //create name of place and click-bility
+        let resultElement = document.createElement("a");
+        resultElement.innerHTML = eachVenue.name;
+        resultElement.className = "search-result";
+        resultElement.addEventListener("click", function () {
+          map.flyTo(coordinate, 16);
+          marker.openPopup();
+        });
+        searchEachText.appendChild(resultElement);
+
+        //tips of each listing to be filtered by latest date
         let responseTip = null;
         try {
           responseTip = await searchTip(eachVenue.fsq_id)
@@ -133,19 +138,8 @@ async function main() {
               resultElementTip.className = "search-tip-result";
               searchEachText.appendChild(resultElementTip);
             }
-
         }
-
-        //create name of place and click-bility
-        let resultElement = document.createElement("a");
-        resultElement.innerHTML = eachVenue.name;
-        resultElement.className = "search-result";
-        resultElement.addEventListener("click", function () {
-          map.flyTo(coordinate, 16);
-          marker.openPopup();
-        });
         
-        searchEachText.appendChild(resultElement);
         searchEach.appendChild(searchEachText);
         searchResultElement.appendChild(searchEach);
         searchResultElement.appendChild(spaceElement);
