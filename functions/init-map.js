@@ -1,5 +1,6 @@
 function initMap() {
-    let map = L.map("singapore-map");
+    let map = L.map("singapore-map", { zoomControl: false });
+    
     map.setView(singapore, 12);
   
     // setup tilelayer

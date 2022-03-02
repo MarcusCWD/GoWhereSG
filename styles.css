@@ -1,6 +1,12 @@
 #singapore-map {
   height: 100vh;
 }
+#branding-logo{
+height: 200px;
+position: absolute;
+z-index: 314200;
+padding: 5px;
+}
 
 #myTab {
   font-size: 18px;
