@@ -10,22 +10,25 @@ async function main() {
     let pages = document.querySelectorAll(".page");
     for (let p of pages) {
       p.classList.remove("show");
+      p.classList.add("hidden");
     }
     document.querySelector("#page-1").classList.add("show");
+    // document.querySelector("#page-1").classList.remove("hidden");
   });
   //for front page
   document.querySelector("#search-btn-front").addEventListener("click", async function () {
     let pages = document.querySelectorAll(".page");
     for (let p of pages) {
       p.classList.remove("show");
+      p.classList.add("hidden");
     }
     document.querySelector("#page-2").classList.add("show");
+    // document.querySelector("#page-2").classList.remove("hidden");
     
     categoryFunc(); 
-    console.log(categories) 
     searchResultLayer.clearLayers(); // get rid of the existing markers
     document.querySelector("#search-results").textContent = ""; // get rid of all search results
-    let query = document.querySelector("#search-input").value;
+    let query = document.querySelector("#search-results-front").value;
     let bounds = map.getBounds();
     let northeast = bounds.getNorthEast();
     let southwest = bounds.getSouthWest();
@@ -164,7 +167,6 @@ async function main() {
     searchBtn.addEventListener("click", async function () {
 
       categoryFunc(); 
-      console.log(categories) 
       searchResultLayer.clearLayers(); // get rid of the existing markers
       document.querySelector("#search-results").textContent = ""; // get rid of all search results
       let query = document.querySelector("#search-input").value;

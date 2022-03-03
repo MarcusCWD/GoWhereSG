@@ -2,12 +2,10 @@
 function categoryFunc(){
 
   let returnFilter = checkBox();
-  console.log(returnFilter);
 
   //check to see if returnFilter checkbox return true (has items in array)
   if (returnFilter){
     for (filter of returnFilter){
-      console.log(filter)
       if (filter == "entertainment"){
         categories = "10000"
       }

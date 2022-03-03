@@ -96,8 +96,8 @@ width: 180px;
   position: absolute;
 }
 
+/* FOR SINGLE PAGE APPLICATION */
 #page-1 {
-  background-color: aliceblue;
   width: 100%;
 }
 
@@ -110,22 +110,21 @@ width: 180px;
 }
 
 .hidden {
-  transform: translateX(-100%);
+  transform: translateY(-100%);
 }
 
 .show {
-  transform: translateX(0);
+  transform: translateY(0);
 }
-/* FOR SINGLE PAGE APPLICATION */
 
 .carousel-inner .carousel-item img {
-  height: 80vh;
+  height: 60vh;
   object-fit: cover;
 }
 
-/* CTA */
+/* FRONT PAGE STYLES */
 .cta h1 {
-  font-size: 2.2em;
+  font-size: 2.0em;
   letter-spacing: 1px;
   line-height: 1;
 }
