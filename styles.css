@@ -42,7 +42,8 @@ width: 180px;
 /* to change color later */
 .btn-filter{
   background-color: #ffff;
-  border-color: blue;
+  border-color: #0D6EFD;
+  color: #0D6EFD;;
 }
 
 .card-explore{
@@ -88,6 +89,63 @@ width: 180px;
   border-radius: 0.2em;
 }
 
+/* FOR SINGLE PAGE APPLICATION */
+.page {
+  height: 100vh;
+  box-sizing: border-box; /* padding and margin will be part of the element's width instead of being added on */
+  position: absolute;
+}
+
+#page-1 {
+  background-color: aliceblue;
+  width: 100%;
+}
+
+#page-2 {
+  width: 100%;
+}
+
+#all-pages {
+  position: relative;
+}
+
+.hidden {
+  transform: translateX(-100%);
+}
+
+.show {
+  transform: translateX(0);
+}
+/* FOR SINGLE PAGE APPLICATION */
+
+.carousel-inner .carousel-item img {
+  height: 80vh;
+  object-fit: cover;
+}
+
+/* CTA */
+.cta h1 {
+  font-size: 2.2em;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.cta p {
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.s-btn {
+  background-color: #d83752;
+  border: none;
+}
+
+.main-color {
+  background-color:#d83752;
+  color: #fff;
+}
+
+/* FOR INVISIBLE SCROLL BAR */
 ::-webkit-scrollbar {
   width: 4px;               
 }
@@ -101,3 +159,4 @@ width: 180px;
   border-radius: 10px;       
   border: 5px solid transparent; 
 }
+/* FOR INVISIBLE SCROLL BAR */

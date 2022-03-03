@@ -5,6 +5,135 @@ let map1Layer = L.layerGroup();
 let map2Layer = L.layerGroup();
 // ------------------FUNCTION: main------------------ //
 async function main() {
+  //for map page
+  document.querySelector("#branding-logo").addEventListener("click", function () {
+    let pages = document.querySelectorAll(".page");
+    for (let p of pages) {
+      p.classList.remove("show");
+    }
+    document.querySelector("#page-1").classList.add("show");
+  });
+  //for front page
+  document.querySelector("#search-btn-front").addEventListener("click", async function () {
+    let pages = document.querySelectorAll(".page");
+    for (let p of pages) {
+      p.classList.remove("show");
+    }
+    document.querySelector("#page-2").classList.add("show");
+    
+    categoryFunc(); 
+    console.log(categories) 
+    searchResultLayer.clearLayers(); // get rid of the existing markers
+    document.querySelector("#search-results").textContent = ""; // get rid of all search results
+    let query = document.querySelector("#search-input").value;
+    let bounds = map.getBounds();
+    let northeast = bounds.getNorthEast();
+    let southwest = bounds.getSouthWest();
+    let response = await searchNESW(northeast.lat,northeast.lng, southwest.lat, southwest.lng, query);
+    
+    // get the div that will display the search results
+    let searchResultElement = document.querySelector("#search-results");
+
+    // show the number of listings that foursquare query gives back
+    let searchResultNumber = document.createElement("div");
+    searchResultNumber.className = "text-secondary m-1";
+    searchResultNumber.innerText = `Search Results: ${response.results.length}`
+    searchResultElement.appendChild(searchResultNumber)
+
+    for (let eachVenue of response.results) {
+      let coordinate = [
+        eachVenue.geocodes.main.latitude,
+        eachVenue.geocodes.main.longitude,
+      ];
+      let marker = L.marker(coordinate, {icon: searchIcon});
+      marker.bindPopup(`<div>${eachVenue.name}</div>`);
+      marker.addTo(searchResultLayer);
+
+      let searchEach =  document.createElement("div");
+      searchEach.className = "search-each row"
+      let searchEachText = document.createElement("div")
+      searchEachText.className = "search-each-text col-6"
+      let spaceElement = document.createElement("hr");
+      spaceElement.className = "m-3";
+
+
+      //pictures of each listing to be filtered by latest date
+      let responsePic = null;
+      try {
+        responsePic = await searchPic(eachVenue.fsq_id)
+      } catch(e) {
+        responsePic= []
+        console.log('error caught')
+      } finally {
+        let resultElementPic =  document.createElement("div")
+        resultElementPic.className = "search-pic-result col-6"
+        if (responsePic.length == 0 ){
+          resultElementPic.innerHTML = `<img src="images/singapore-visit.jpg" class="img" >`
+        }
+        else{
+          let sortByDate = new Date('1800-01-01T01:01:00')
+          let imgLatest = null
+          for (byDate of responsePic){
+            let newDate = new Date (byDate.created_at)
+            if(newDate.getTime() >= sortByDate.getTime()){
+              sortByDate = newDate
+              imgLatest = byDate.prefix + "500" + byDate.suffix
+            }
+          }
+          let internalImg =  document.createElement("img")
+          internalImg.src = imgLatest
+          internalImg.className = "img"
+          resultElementPic.appendChild(internalImg)
+        }
+        searchEach.appendChild(resultElementPic);
+      }
+
+      //create name of place and click-bility
+      let resultElement = document.createElement("a");
+      resultElement.innerHTML = eachVenue.name;
+      resultElement.className = "search-result";
+      resultElement.addEventListener("click", function () {
+        map.flyTo(coordinate, 17);
+        marker.openPopup();
+      });
+      searchEachText.appendChild(resultElement);
+
+      //tips of each listing to be filtered by latest date
+      let responseTip = null;
+      try {
+        responseTip = await searchTip(eachVenue.fsq_id)
+      } catch(e) {
+        responseTip= []
+        console.log('error caught')
+      } finally {
+          let resultElementTip =  document.createElement("div");
+          if (responseTip.length == 0 ){
+            resultElementTip.innerText = ""
+            resultElementTip.className = "search-tip-result"
+          }
+          else{
+            let sortByDate = new Date('1800-01-01T01:01:00')
+            let tipLatest = ""
+            for (byDate of responseTip){
+              let newDate = new Date (byDate.created_at)
+              if(newDate.getTime() >= sortByDate.getTime()){
+                sortByDate = newDate
+                tipLatest = byDate.text 
+              }
+            }
+            resultElementTip.innerText = tipLatest;
+            resultElementTip.className = "search-tip-result";
+            searchEachText.appendChild(resultElementTip);
+          }
+      }
+      
+      searchEach.appendChild(searchEachText);
+      searchResultElement.appendChild(searchEach);
+      searchResultElement.appendChild(spaceElement);
+    }
+  
+  });
+  
 
   let map = initMap();
 
@@ -15,7 +144,6 @@ async function main() {
   weatherLayer.addTo(map);
 
   let infoCenterLayer = L.layerGroup();
-  
   
   tabFunction();
   
