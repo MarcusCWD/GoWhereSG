@@ -107,7 +107,7 @@ async function main() {
         resultElement.innerHTML = eachVenue.name;
         resultElement.className = "search-result";
         resultElement.addEventListener("click", function () {
-          map.flyTo(coordinate, 16);
+          map.flyTo(coordinate, 17);
           marker.openPopup();
         });
         searchEachText.appendChild(resultElement);
