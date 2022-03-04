@@ -5,6 +5,31 @@ let map1Layer = L.layerGroup();
 let map2Layer = L.layerGroup();
 // ------------------FUNCTION: main------------------ //
 async function main() {
+
+  let map = initMap();
+
+  let searchResultLayer = L.markerClusterGroup();
+  searchResultLayer.addTo(map);
+
+  let weatherLayer = L.layerGroup();
+  weatherLayer.addTo(map);
+
+  let infoCenterLayer = L.layerGroup();
+  
+  tabFunction();
+
+  let controlMap = L.Routing.control({
+    waypoints: [L.latLng(1.3521,103.98), L.latLng(1.3521,103.72)],
+    routeWhileDragging: true,
+  })
+
+  let routeBlock = controlMap.onAdd(map);	
+  // controlMap.addTo(map)
+  // console.log(routeBlock)
+  let controls = document.querySelector('#weather');
+  // console.log(controls)
+  controls.appendChild(routeBlock);
+  
   //for map page
   document.querySelector("#branding-logo").addEventListener("click", function () {
     let pages = document.querySelectorAll(".page");
@@ -136,19 +161,7 @@ async function main() {
     }
   
   });
-  
 
-  let map = initMap();
-
-  let searchResultLayer = L.markerClusterGroup();
-  searchResultLayer.addTo(map);
-
-  let weatherLayer = L.layerGroup();
-  weatherLayer.addTo(map);
-
-  let infoCenterLayer = L.layerGroup();
-  
-  tabFunction();
   
   window.addEventListener("DOMContentLoaded", async function () {
 
@@ -293,6 +306,7 @@ async function main() {
     // add the overlays to the map
     L.control.layers(baseLayer, overlay,).addTo(map,  {icon: searchIcon});  
   });
+  
 }
 // ------------------ END FUNCTION: main------------------ //
 
