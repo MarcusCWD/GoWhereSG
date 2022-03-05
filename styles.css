@@ -8,30 +8,33 @@ z-index: 314200;
 padding: 5px;
 }
 
-#myTab {
+#my-tab {
   font-size: 18px;
   background-color: #f5f4f4;
 }
 
-#parentTab {
+#parent-tab {
   bottom: 0;
   position: absolute;
   z-index: 314200;
-  width: 390px;
 }
 
 #myTabContent {
   height: 60vh;
   overflow-y: auto;
   background-color: #fff;
-
 }
 
+.trans-close{
+  transition: height 0.5s ease;
+}
+.trans-open{
+  transition: height 0.5s ease;
+}
 .img{
 border-radius: 10px;
-height: 180px;
-width: 180px;
-
+height: 170px;
+width: 170px;
 }
 
 #search-results{
@@ -158,4 +161,50 @@ width: 180px;
   border-radius: 10px;       
   border: 5px solid transparent; 
 }
-/* FOR INVISIBLE SCROLL BAR */
+
+
+@media only screen and (max-width: 380px) {
+  #parent-tab{
+    width: 330px;
+  }
+  #my-tab {
+    font-size: 15px;
+  }
+  .img{
+    height: 130px;
+    width: 130px;
+  }
+} 
+@media only screen and (min-width: 390px) {
+  #parent-tab{
+    width: 390px;
+  }
+} 
+@media only screen and (min-width: 420px) {
+  #parent-tab{
+    left: 5%
+  }
+} 
+@media only screen and (min-width: 470px) {
+  #parent-tab{
+    left: 10%
+  }
+} 
+@media only screen and (min-width: 540px) {
+  #parent-tab{
+    left: 17%
+  }
+} 
+@media only screen and (min-width: 576px) {
+  #parent-tab{
+    left: 0;
+  }
+} 
+@media only screen and (min-width: 992px) {
+  #parent-tab{
+    left: 0;
+  }
+  #myTabContent {
+    height: 75vh;
+  }
+} 

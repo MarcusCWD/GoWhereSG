@@ -1,5 +1,5 @@
 const API_BASE_URL = "https://api.foursquare.com/v3";
-const API_KEY = "fsq3rUd+WwCcMYgPyi7kuRpXjjEw8J3b1CwmPHwUFiiaK5c=";
+const API_KEY = "fsq3IuV6YyQRcDQ4Xj/VoQ+X36+3YslUDBdVvwvl1sv54hA=";
 
 async function searchNESW(neLat,neLng,swLat,swLng, query) {
     let ne = neLat + "," + neLng;

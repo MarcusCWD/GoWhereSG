@@ -38,7 +38,12 @@ async function main() {
       p.classList.add("hidden");
     }
     document.querySelector("#page-1").classList.add("show");
-    // document.querySelector("#page-1").classList.remove("hidden");
+    document.getElementById("entertainment").checked = false;
+    document.getElementById("lodging").checked = false;
+    document.getElementById("food").checked = false;
+    document.getElementById("shop").checked = false;
+    document.getElementById("eco").checked = false;
+    document.querySelector("#search-results").value="";
   });
   //for front page
   document.querySelector("#search-btn-front").addEventListener("click", async function () {
@@ -48,12 +53,18 @@ async function main() {
       p.classList.add("hidden");
     }
     document.querySelector("#page-2").classList.add("show");
-    // document.querySelector("#page-2").classList.remove("hidden");
+    document.getElementById("entertainment").checked = false;
+    document.getElementById("lodging").checked = false;
+    document.getElementById("food").checked = false;
+    document.getElementById("shop").checked = false;
+    document.getElementById("eco").checked = false;
     
-    categoryFunc(); 
     searchResultLayer.clearLayers(); // get rid of the existing markers
     document.querySelector("#search-results").textContent = ""; // get rid of all search results
     let query = document.querySelector("#search-results-front").value;
+    console.log(query)
+    document.querySelector("#search-results-front").value="";
+    document.querySelector("#search-input").value=query;
     let bounds = map.getBounds();
     let northeast = bounds.getNorthEast();
     let southwest = bounds.getSouthWest();
