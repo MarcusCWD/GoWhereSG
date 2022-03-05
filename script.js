@@ -62,7 +62,6 @@ async function main() {
     searchResultLayer.clearLayers(); // get rid of the existing markers
     document.querySelector("#search-results").textContent = ""; // get rid of all search results
     let query = document.querySelector("#search-results-front").value;
-    console.log(query)
     document.querySelector("#search-results-front").value="";
     document.querySelector("#search-input").value=query;
     let bounds = map.getBounds();
