@@ -28,7 +28,7 @@ async function weatherFunc(weatherLayer){
         weatherMarker = L.marker(weatherCoordinate[responseWeather.items[0].forecasts.indexOf(weatherType)], {icon:weatherIconWind});
       }
 
-      weatherMarker.bindPopup(`<div>${weatherType.area}</div>`);
+      weatherMarker.bindPopup(`<div>${weatherType.area}</div> <div>${weatherType.forecast}</div>`);
       weatherMarker.addTo(weatherLayer);
     }
 }

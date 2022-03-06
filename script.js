@@ -17,17 +17,16 @@ async function main() {
   let infoCenterLayer = L.layerGroup();
   
   tabFunction();
-
+  card1Func(searchResultLayer, map);
+  card2Func(searchResultLayer, map);
+  card3Func(searchResultLayer, map);
   let controlMap = L.Routing.control({
     waypoints: [L.latLng(1.354,103.864), L.latLng(1.2451,103.825)],
     routeWhileDragging: true,
   })
 
   let routeBlock = controlMap.onAdd(map);	
-  // controlMap.addTo(map)
-  // console.log(routeBlock)
   let controls = document.querySelector('#weather');
-  // console.log(controls)
   controls.appendChild(routeBlock);
   
   //for map page
@@ -84,7 +83,7 @@ async function main() {
         eachVenue.geocodes.main.longitude,
       ];
       let marker = L.marker(coordinate, {icon: searchIcon});
-      marker.bindPopup(`<div>${eachVenue.name}</div>`);
+      marker.bindPopup(`<div>${eachVenue.name}</div> <div>${eachVenue.location.formatted_address}</div>`);
       marker.addTo(searchResultLayer);
 
       let searchEach =  document.createElement("div");
@@ -196,6 +195,7 @@ async function main() {
       let bounds = map.getBounds();
       let northeast = bounds.getNorthEast();
       let southwest = bounds.getSouthWest();
+      console.log(northeast,southwest)
       let response = await searchNESW(northeast.lat,northeast.lng, southwest.lat, southwest.lng, query);
       
       // get the div that will display the search results
@@ -213,7 +213,7 @@ async function main() {
           eachVenue.geocodes.main.longitude,
         ];
         let marker = L.marker(coordinate, {icon: searchIcon});
-        marker.bindPopup(`<div>${eachVenue.name}</div>`);
+        marker.bindPopup(`<div>${eachVenue.name}</div> <div>${eachVenue.location.formatted_address}</div>`);
         marker.addTo(searchResultLayer);
 
         let searchEach =  document.createElement("div");
@@ -257,7 +257,7 @@ async function main() {
 
         //create name of place and click-bility
         let resultElement = document.createElement("a");
-        resultElement.innerHTML = eachVenue.name;
+        resultElement.innerHTML = `<div>${eachVenue.name}</div>`;
         resultElement.className = "search-result";
         resultElement.addEventListener("click", function () {
           map.flyTo(coordinate, 17);

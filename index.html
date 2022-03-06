@@ -37,6 +37,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Raleway:wght@800&display=swap" rel="stylesheet">
     <!-- internal stylesheet.css -->
     <link rel="stylesheet" href="styles.css" />
     <title>GoWhereSG - where are you going today?</title>
@@ -247,14 +248,14 @@
                   <input
                     type="search"
                     class="form-control rounded "
-                    placeholder="Search"
+                    placeholder="eg.Sentosa"
                     aria-label="Search"
                     aria-describedby="search-addon"
                     id="search-input"
                   />
                   <button
                     type="button"
-                    class="btn btn-outline-primary"
+                    class="p-2 btn s-btn btn-dark ps-3 pe-3 fs-6"
                     id="search-btn"
                   >
                     search
@@ -264,7 +265,7 @@
                 <!-- Start droplist filter -->
                 <div>
                   <p>
-                    <button class="btn btn-filter my-1" type="button" data-bs-toggle="collapse" data-bs-target="#filter-dropdown" aria-expanded="false" aria-controls="collapseExample">
+                    <button class="btn f-btn btn-filter my-1" type="button" data-bs-toggle="collapse" data-bs-target="#filter-dropdown" aria-expanded="false" aria-controls="collapseExample">
                       Filter
                     </button>
                   </p>
@@ -321,22 +322,33 @@
               aria-labelledby="explore-tab"
             >
               <div>
-                  <div
-                  class="image card-explore m-3 card1"
-                  style="background-image: url(images/singapore-flyer.jpg)"
-                >Iconic Singapore</div>
+                  
+                <div class="image card-explore m-3 card1" style="background-image: url(images/singapore-flyer.jpg)">
+                  Singapore Flyer
+                  <button
+                  type="button"
+                  class="btn f-btn btn-dark btn-lg ps-3 pe-3 fs-6 d-block"
+                  id="card-btn1"
+                  >Go Now</button>
+                </div>
                 
+                <div class="image card-explore m-3 card2" style="background-image: url(images/chinatown-singapore.jpg)">
+                  China Town
+                  <button
+                  type="button"
+                  class="btn f-btn btn-dark btn-lg ps-3 pe-3 fs-6 d-block"
+                  id="card-btn2"
+                  >Go Now</button>
+                </div>
                 
-                  <div
-                  class="image card-explore m-3 card2"
-                  style="background-image: url(images/chinatown-singapore.jpg)"
-                >Heritage Singapore</div>
-                
-                
-                  <div
-                  class="image card-explore m-3 card3"
-                  style="background-image: url(images/marina-bay-sands-singapore.jpg)"
-                >Shop Singapore</div>
+                <div class="image card-explore m-3 card3" style="background-image: url(images/marina-bay-sands-singapore.jpg)">
+                  Marina Bay
+                  <button
+                  type="button"
+                  class="btn f-btn btn-dark btn-lg ps-3 pe-3 fs-6 d-block"
+                  id="card-btn3"
+                  >Go Now</button>
+                </div>
             
               </div>
             </div>
@@ -404,7 +416,9 @@
     <script src="./functions/data-tip.js"></script>
     <script src="./functions/form.js"></script>
     <script src="./functions/data.js"></script>
-  
+    <script src="./functions/singapore-flyer.js"></script>
+    <script src="./functions/china-town.js"></script>
+    <script src="./functions/marina-bay.js"></script>
     <script src="script.js"></script>
   </body>
   <!-- ====================== END Body ======================   -->

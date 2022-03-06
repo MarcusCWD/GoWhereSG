@@ -52,9 +52,7 @@ width: 170px;
 }
 
 .btn-filter{
-  background-color: #ffff;
-  border-color: #0D6EFD;
-  color: #0D6EFD;;
+  color: #fff;;
 }
 
 .card-explore{
@@ -74,20 +72,20 @@ width: 170px;
 }
 .card1{
   color: #FEF7DC;
-  font-family: 'Dancing Script', cursive;
-  font-size: 35px;
+  font-family: 'Raleway';
+  font-size: 28px;
   padding: 5px;
 }
 .card2{
   color: rgb(28, 68, 68);
-  font-family: 'Dancing Script', cursive;
-  font-size: 35px;
+  font-family: 'Raleway';
+  font-size: 28px;;
   padding: 5px;
 }
 .card3{
   color: #FEF7DC;
-  font-family: 'Dancing Script', cursive;
-  font-size: 35px;
+  font-family: 'Raleway';
+  font-size: 28px;;
   padding: 5px;
 }
 .image {
@@ -146,6 +144,11 @@ width: 170px;
 
 .s-btn {
   background-color: #d83752;
+  border: none;
+}
+
+.f-btn {
+  background-color:#b9a9ac;
   border: none;
 }
 
