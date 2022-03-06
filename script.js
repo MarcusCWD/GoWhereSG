@@ -26,7 +26,7 @@ async function main() {
   })
 
   let routeBlock = controlMap.onAdd(map);	
-  let controls = document.querySelector('#weather');
+  let controls = document.querySelector('#route');
   controls.appendChild(routeBlock);
   
   //for map page

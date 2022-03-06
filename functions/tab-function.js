@@ -8,6 +8,7 @@ function tabFunction() {
         // myTabContent.style.display = "none";
         myTabContent.classList.add("trans-close");
         myTabContent.classList.remove("trans-open");
+        tabBtnPress.classList.add("btn-rotate")
         myTabContent.style.height="0vh"
         tabBtnFlag = false;
       }
@@ -16,6 +17,7 @@ function tabFunction() {
         // myTabContent.style.display = "block";
         myTabContent.classList.add("transOpen");
         myTabContent.classList.remove("transClose");
+        tabBtnPress.classList.remove("btn-rotate")
         myTabContent.style.height="60vh"
         tabBtnFlag = true;
       }

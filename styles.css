@@ -39,6 +39,9 @@ padding: 5px;
 .trans-open{
   transition: height 0.5s ease;
 }
+.btn-rotate{
+  transform: rotate(180deg);
+}
 .img{
 border-radius: 10px;
 height: 170px;
