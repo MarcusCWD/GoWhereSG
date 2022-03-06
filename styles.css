@@ -2,12 +2,21 @@
   height: 100vh;
 }
 #branding-logo{
-height: 200px;
+height: 100px;
 position: absolute;
 z-index: 314200;
 padding: 5px;
 }
+#branding-logo2{
+  height: 100px;
+  /* position: absolute; */
+  z-index: 314200;
+  padding: 5px;
+  }
 
+.top-head{
+  background-color: #f5f4f4;
+}
 #my-tab {
   font-size: 18px;
   background-color: #f5f4f4;
@@ -42,7 +51,6 @@ width: 170px;
   margin : 5px;
 }
 
-/* to change color later */
 .btn-filter{
   background-color: #ffff;
   border-color: #0D6EFD;
@@ -53,7 +61,6 @@ width: 170px;
   border-radius: 10px;
   background-color: #ffff;
   height: 400px;
-  /* padding: 20px */
 }
 
 .tab-button-search{
@@ -121,7 +128,7 @@ width: 170px;
 }
 
 .carousel-inner .carousel-item img {
-  height: 60vh;
+  height: 75vh;
   object-fit: cover;
 }
 
@@ -174,15 +181,24 @@ width: 170px;
     height: 130px;
     width: 130px;
   }
+  #branding-logo{
+    height: 100px;
+  }
 } 
 @media only screen and (min-width: 390px) {
   #parent-tab{
     width: 390px;
   }
+  #branding-logo{
+    height: 120px;
+  }
 } 
 @media only screen and (min-width: 420px) {
   #parent-tab{
     left: 5%
+  }
+  #branding-logo{
+    height: 140px;
   }
 } 
 @media only screen and (min-width: 470px) {
@@ -206,5 +222,8 @@ width: 170px;
   }
   #myTabContent {
     height: 75vh;
+  }
+  #branding-logo{
+    height: 160px;
   }
 } 

@@ -48,7 +48,13 @@
 
     <div id="all-pages">
       <div class="page" id="page-1">
-        
+        <div class="d-flex justify-content-center top-head">
+          <img
+          src="images/logo2.png"
+          alt="Marina Bay Sands Singapore"
+          id="branding-logo2"
+        />
+        </div>
         <div class="top position-relative">
           <!-- START Carousel -->
           <div id="carousel-main" class="carousel slide" data-bs-ride="carousel">
@@ -122,19 +128,25 @@
               <input
                 class="form-control"
                 type="email"
-                placeholder="Your email here"/>
+                placeholder="Your email here"
+                id="email-form"
+              />
             </div>
+            <div id="email-error"></div>
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label"
+              <label for="message-form" class="form-label"
                 >Message</label
               >
               <textarea
                 class="form-control"
                 placeholder="Your message here"
-                id="exampleFormControlTextarea1"
-                rows="1"></textarea>
+                id="message-form"
+                rows="5"
+                id="message-form"
+                ></textarea>
             </div>
-            <button type="button" class="p-2 main-color btn btn-primary btn-dark btn-lg mt-3 ps-3 pe-3 fs-6">Send</button>
+            <div id="message-error"></div>
+            <button type="button" class="p-2 main-color btn btn-lg mt-3 ps-3 pe-3 fs-6" id="form-btn">Send</button>
           </section>
         </div>
 
@@ -142,8 +154,12 @@
         <!--START Footer-->     
         <div class="display-6 fs-6 main-color p-2">
           <p>
-            <img src="images/facebook.png" style="width: 20px" class="mx-2 mt-3"/>
-            <img src="images/instagram.png" style="width: 20px" class="mx-2 mt-3"/>
+            <a href="https://www.facebook.com/" class="mx-2 mt-3" style="text-decoration: none">
+              <img src="images/facebook.png" style="width: 20px"/>
+            </a>
+            <a href="https://www.instagram.com/" class="mx-2 mt-3" style="text-decoration: none">
+              <img src="images/instagram.png" style="width: 20px"/>
+            </a>
           </p>
 
           <div>&copy GoWhereSG 2022</div>
@@ -156,7 +172,7 @@
       </div>
       <div class="page hidden" id="page-2">
         <!-- Start branding icon -->
-        <img id="branding-logo" src="images/logo.png" alt="GoWhereSG logo branding">
+        <img id="branding-logo" src="images/logo2.png" alt="GoWhereSG logo branding">
 
         <!-- End branding icon -->
         <!-- ------------------ START NAVBAR -------------------- -->
@@ -386,6 +402,7 @@
     <script src="./functions/data-ne-sw.js"></script>
     <script src="./functions/data-pic.js"></script>
     <script src="./functions/data-tip.js"></script>
+    <script src="./functions/form.js"></script>
     <script src="./functions/data.js"></script>
   
     <script src="script.js"></script>

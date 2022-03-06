@@ -56,7 +56,7 @@ const infoIcon = L.icon({
 
 const searchIcon = L.icon({
     iconUrl: 'images/search-pin.png',
-    iconSize: [20, 30],
+    iconSize: [30, 30],
     iconAnchor: [20, 30],
     popupAnchor: [-10, -30]
 

@@ -19,7 +19,7 @@ async function main() {
   tabFunction();
 
   let controlMap = L.Routing.control({
-    waypoints: [L.latLng(1.3521,103.98), L.latLng(1.3521,103.72)],
+    waypoints: [L.latLng(1.354,103.864), L.latLng(1.2451,103.825)],
     routeWhileDragging: true,
   })
 
@@ -106,7 +106,7 @@ async function main() {
         let resultElementPic =  document.createElement("div")
         resultElementPic.className = "search-pic-result col-6"
         if (responsePic.length == 0 ){
-          resultElementPic.innerHTML = `<img src="images/singapore-visit.jpg" class="img" >`
+          resultElementPic.innerHTML = `<img src="images/jewel-singapore.jpg" class="img" >`
         }
         else{
           let sortByDate = new Date('1800-01-01T01:01:00')
@@ -235,7 +235,7 @@ async function main() {
           let resultElementPic =  document.createElement("div")
           resultElementPic.className = "search-pic-result col-6"
           if (responsePic.length == 0 ){
-            resultElementPic.innerHTML = `<img src="images/singapore-visit.jpg" class="img" >`
+            resultElementPic.innerHTML = `<img src="images/jewel-singapore.jpg" class="img" >`
           }
           else{
             let sortByDate = new Date('1800-01-01T01:01:00')
@@ -309,8 +309,8 @@ async function main() {
 
     // ovelays: can toggle on or off individual for each layer
     let overlay = {
-      "Weather locations" : weatherLayer,
-      "Infomation Centers" :  infoCenterLayer
+      "Weather 2-h forecast" : weatherLayer,
+      "Tourist Infomation Centers" :  infoCenterLayer
     };
 
     // add the overlays to the map

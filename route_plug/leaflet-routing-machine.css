@@ -217,11 +217,11 @@
     font-weight: bold;
 }
 
-.leaflet-routing-collapse-btn:after {
+/* .leaflet-routing-collapse-btn:after {
     content: '\00d7';
-}
+} */
 
-.leaflet-routing-container-hide .leaflet-routing-collapse-btn {
+/* .leaflet-routing-container-hide .leaflet-routing-collapse-btn {
     position: relative;
     left: 4px;
     top: 4px;
@@ -229,11 +229,11 @@
     width: 26px;
     height: 23px;
     background-image: url('routing-icon.png');
-}
+} */
 
-.leaflet-routing-container-hide .leaflet-routing-collapse-btn:after {
+/* .leaflet-routing-container-hide .leaflet-routing-collapse-btn:after {
     content: none;
-}
+} */
 
 .leaflet-top .leaflet-routing-container.leaflet-routing-container-hide {
     margin-top: 10px !important;
