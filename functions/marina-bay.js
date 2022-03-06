@@ -10,7 +10,7 @@ function card3Func(searchResultLayer, map){
           let response = await searchNESW(1.2899647012376088,103.87219905940583, 1.2721592849633463,103.85157823649934, query);
           // get the div that will display the search results
           let searchResultElement = document.querySelector("#search-results");
-          map.flyTo([1.2847,103.8610], 17);
+          map.flyTo([1.2847,103.8610], 16);
           // show the number of listings that foursquare query gives back
           let searchResultNumber = document.createElement("div");
           searchResultNumber.className = "text-secondary m-1";

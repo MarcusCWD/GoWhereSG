@@ -25,6 +25,7 @@ document.querySelector('#form-btn').addEventListener('click', function () {
 
     if (hasEmailError) {
         emailError.style.display = 'block';
+        emailError.style.color ="red"
         emailError.innerHTML += `<p >Please provide a valid email address</p>`;
     }
     
@@ -33,6 +34,7 @@ document.querySelector('#form-btn').addEventListener('click', function () {
 
     if (hasMsgError) {
         msgError.style.display = 'block';
+        msgError.style.color ="red"
         msgError.innerHTML += `<p >Please provide a valid message</p>`;
     }
 
