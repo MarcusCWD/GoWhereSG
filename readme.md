@@ -62,18 +62,18 @@ _Non-functional requirements_
 
 ### **Structure**
 
-<img src='images/structure.png'><br>
+<img src='images/structure.png' style='display:block'><br>
 
 ### **Skeleton**
 
 _Mobile Response_
-<img src='images/Mobile-frame.png'><br>
+<img src='images/Mobile-frame.png' style='display:block'><br>
 
 _Desktop Response_
-<img src='images/Desktop-frame.png'><br>
+<img src='images/Desktop-frame.png' style='display:block'><br>
 
 _Process of Application_
-<img src='images/Process-frame.png'><br>
+<img src='images/Process-frame.png' style='display:block'><br>
 
 ### **Surface**
 
