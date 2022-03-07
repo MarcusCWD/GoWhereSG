@@ -106,10 +106,10 @@ _Limitations and future implementations_
 
 **Test Cases**
 
-Access the test cases [here](test.pdf).
+Access the test cases [here](https://github.com/MarcusCWD/GoWhereSG/blob/main/test-case/Test%20Case.pdf).
 
 **Testing for Mobile Responsiveness**
- * Testing was done using chrome developer tool across iPhone X, Galaxy S5, iPad, iPad Pro, 13-inch MacBook Air
+ * Testing was done using chrome developer tool with variable width sizes from 330px to 1400px
 
 
 ## Technologies Used
