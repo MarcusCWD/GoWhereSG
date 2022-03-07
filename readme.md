@@ -74,7 +74,7 @@ _Non-functional requirements_
 
 _Colours_
 
-<img src='images/color_palette.png' style='display:block'>
+<img src='images/color-palette.png' style='display:block'>
 <br>
 
 * The main color scheme of the app follows a pink hue with a slight brown undertone 
