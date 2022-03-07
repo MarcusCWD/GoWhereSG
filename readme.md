@@ -7,7 +7,7 @@ Access the live demo of the website [here](https://admiring-snyder-0686db.netlif
 
 **Project Context**
 
-The _GoWhereSG_ is a mobile-responsive and interactive map application developed for both foreign and local tourist to be able to search for leisure activities around Singapore.
+ _GoWhereSG_ is a mobile-responsive and interactive map application developed for both foreign and local tourist to be able to search for leisure activities around Singapore.
 
 **User Goals**
 
@@ -21,7 +21,7 @@ The app aims to provide users with recommendations from paid avenues that promot
 
 While there are countless local map applications and tourism websites around, many of them do not consider an all inclusive map navigation, recommendation application. This can be fustrating for new visitors especially if they are unfamilar with the geography of the city state. They would need to hop between map applications and website recommendations.
 
-With Singapore being situated around earth's equator, it expriences sporadic weather conditions such as with rainfall and thundery storms. This in turn affects planing of tour itineraries. Often, tourist would be caught off-guard in undesirable weather conditions and lead their plans to disarray.
+With Singapore being situated around earth's equator, it expriences sporadic weather conditions such as with rainfall and thundery storms. This in turn affects planing of tour itineraries. Often, tourist would be caught off-guard in undesirable weather conditions, leading to their plans ruin.
 
 Thus, GoWhereSG will include an all inclusive map and recommendation application which will inform users on the upcoming weather conditions.
 
@@ -41,9 +41,9 @@ _User_
 
 User Stories | Acceptance Criteria(s)
 ------------ | -------------
-As a tourist, i want to have a search feature based on my interest so that i can visit places that i enjoy. | Filter function for area of interest
-As a tourist, i do not want to be hindered by bad weather while doing outdoor activities so that i can have the best local experience. | Feature that can allow users to see the weathe forecast on the map.
-As a tourist, i want to know how to travel towards my place of intrest so that i do not get lost and waste time. | A route feature that helps user navigate their way
+As a tourist, i want to have a search feature based on my interest so that i can visit places that i enjoy. | Filter function for area of interest.
+As a tourist, i do not want to be hindered by bad weather while doing outdoor activities so that i can have the best local experience. | Feature that can allow users to see the weather forecast on the map.
+As a tourist, i want to know how to travel towards my place of intrest so that i do not get lost and waste time. | A route feature that helps user navigate their way.
 
 ### **Scope**
 
@@ -66,8 +66,13 @@ _Non-functional requirements_
 
 ### **Skeleton**
 
+_Mobile Response_
 <img src='images/Mobile-frame.png'><br>
+
+_Desktop Response_
 <img src='images/Desktop-frame.png'><br>
+
+_Process of Application_
 <img src='images/Process-frame.png'><br>
 
 ### **Surface**
@@ -120,14 +125,17 @@ Access the test cases [here](https://github.com/MarcusCWD/GoWhereSG/blob/main/te
 * JavaScript
     * To include interactive elements throughout the web app
 * [Bootstrap v5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
-    * To create toggle buttons and alert popup
+    * To create carousel
+    * To create dropdown
+    * To create checkbox
+    * To create Navbar
+    * To create collaps
 * [Leaflet](https://leafletjs.com/)
     * To create the map of Singapore
     * To add in markers
     * To create layers and clusters for markers
-    * To add current location tracking function
 * [Font Awesome](https://fontawesome.com/)
-    * For icons in the description box
+    * For icons in tab of navbar
 * [Flaticon](https://www.flaticon.com/)
     * For customizing marker icons
 * [Figma](https://www.figma.com/)
@@ -149,6 +157,8 @@ The web app is hosted using Netlify.
 
 * [foursquare](http://foursquare.com/)
     * To obtain search results on searched locations 
+    * To obtain pictures based on fsq_id
+    * To obtain tips based on fsq_id
 * [Data.Gov.Sg](https://data.gov.sg/dataset/realtime-weather-readings)
     * To obtain 2 hour forecast within Singapore
 * [Axios](https://cdnjs.com/libraries/axios)
