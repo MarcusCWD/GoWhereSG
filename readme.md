@@ -66,21 +66,19 @@ _Non-functional requirements_
 
 ### **Skeleton**
 
-_Mobile Response_
-<img src='images/Mobile-frame.png' style='display:block'><br>
-
 _Desktop Response_
-<img src='images/Desktop-frame.png' style='display:block'><br>
 
-_Process of Application_
-<img src='images/Process-frame.png' style='display:block'><br>
+<img src='images/desktop-frame.png' style='display:block'><br>
+
+_Process of Application (mobile response)_
+
+<img src='images/process-frame.png' style='display:block'><br>
 
 ### **Surface**
 
 _Colours_
 
-<img src='images/color-palette.png' style='display:block'>
-<br>
+<img src='images/color-palette.png' style='display:block'><br>
 
 * The main color scheme of the app follows a pink hue with a slight brown undertone 
 To make the website vibrant, the color of pink of chosen for its main theme. This color edge user to be excited about exploring Singapore. Because the national colors consist of red and white, a pink hue would represent a closeness towards the purpose of GoWhereSG's website.
