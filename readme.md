@@ -1,5 +1,5 @@
 # GoWhereSg 
-<img src='images/GoWhereSg.png' style='display:block'><br>
+<img src='images/GoWhereSG.png' style='display:block'><br>
 
 Access the live demo of the website [here](https://admiring-snyder-0686db.netlify.app/).
 
@@ -59,7 +59,6 @@ _Functional Specifications_
 _Non-functional requirements_
 * Mobile responsiveness
     * Achieved via the use of appropriate media queries and flex box
-* Performance
 
 ### **Structure**
 
@@ -75,7 +74,7 @@ _Non-functional requirements_
 
 _Colours_
 
-<img src='images/colour_palette.png' style='display:block'>
+<img src='images/color_palette.png' style='display:block'>
 <br>
 
 * The main color scheme of the app follows a pink hue with a slight brown undertone 
