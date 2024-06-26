@@ -1,7 +1,7 @@
 # GoWhereSg 
 <img src='images/GoWhereSG.png' style='display:block'><br>
 
-Access the live demo of the website [here](https://admiring-snyder-0686db.netlify.app/).
+Access the live demo of the website [here](https://gowheresg.netlify.app/).
 
 ## Project Summary
 
